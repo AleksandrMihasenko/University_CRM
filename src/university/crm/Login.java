@@ -3,9 +3,11 @@ package university.crm;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
 
 public class Login extends JFrame implements ActionListener {
     JButton loginButton, cancelButton;
+    JTextField tfusername, tfpassword;
 
     Login () {
         getContentPane().setBackground(Color.WHITE);
@@ -16,18 +18,18 @@ public class Login extends JFrame implements ActionListener {
         usernameLabel.setBounds(40, 20, 100, 20);
         add(usernameLabel);
 
-        JTextField usernameField = new JTextField();
-        usernameField.setBounds(150, 20, 150, 20);
-        add(usernameField);
+        tfusername usernameField = new JTextField();
+        tfusername.setBounds(150, 20, 150, 20);
+        add(tfusername);
 
         //password
         JLabel passwordLabel = new JLabel("Password");
         passwordLabel.setBounds(40, 70, 100, 20);
         add(passwordLabel);
 
-        JPasswordField passwordField = new JPasswordField();
-        passwordField.setBounds(150, 70, 150, 20);
-        add(passwordField);
+        tfpassword passwordField = new JPasswordField();
+        tfpassword.setBounds(150, 70, 150, 20);
+        add(tfpassword);
 
         //buttons
         loginButton = new JButton("Login");
@@ -60,7 +62,27 @@ public class Login extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == loginButton) {
+            String username = tfusername.getText();
+            String password = tfpassword.getText();
 
+            String query = "select * from login where username='"+username+"' and password='"+password+"'";
+
+            try {
+                Connection connection = new Connection();
+                ResultSet result = connection.statement.executeQuery(query);
+
+                if (result.next()) {
+                    setVisible(false);
+                    new Project();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid username or password");
+                    setVisible(false);
+                }
+
+                connection.statement.close();
+            } catch (Exception error) {
+                error.printStackTrace();
+            }
         } else if (event.getSource() == cancelButton) {
             setVisible(false);
         }

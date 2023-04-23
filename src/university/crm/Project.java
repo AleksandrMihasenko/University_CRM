@@ -73,11 +73,11 @@ public class Project extends JFrame implements ActionListener {
         exam.setForeground(Color.BLUE);
         menuBar.add(exam);
         
-        setJMenuItem examDetails = new JMenuItem("Examinations Results");
+        JMenuItem examDetails = new JMenuItem("Examinations Results");
         examDetails.setForeground(Color.BLACK);
         exam.add(examDetails);
 
-        setJMenuItem studentMarks = new JMenuItem("Student Marks");
+        JMenuItem studentMarks = new JMenuItem("Student Marks");
         studentMarks.setForeground(Color.BLACK);
         exam.add(studentMarks);
 
@@ -87,11 +87,11 @@ public class Project extends JFrame implements ActionListener {
         menuBar.add(updateInfo);
         
         JMenuItem updateGroupInfo = new JMenuItem("Update Group Details");
-        updateGroupInfo.setForeground(Color.WHITE);
+        updateGroupInfo.setForeground(Color.BLACK);
         updateInfo.add(updateGroupInfo);
 
         JMenuItem updateStudentInfo = new JMenuItem("Update Student Details");
-        updateStudentInfo.setForeground(Color.WHITE);
+        updateStudentInfo.setForeground(Color.BLACK);
         updateInfo.add(updateStudentInfo);
 
         //fees
@@ -128,7 +128,7 @@ public class Project extends JFrame implements ActionListener {
         menuBar.add(exit);
         
         JMenuItem exitField = new JMenuItem("Exit");
-        exitField.setForeground(Color.WHITE);
+        exitField.setForeground(Color.BLACK);
         exitField.addActionListener(this);
         exit.add(exitField);
 
