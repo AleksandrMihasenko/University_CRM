@@ -23,10 +23,12 @@ public class Project extends JFrame implements ActionListener {
 
         JMenuItem groupInfo = new JMenuItem("New Group Information");
         groupInfo.setForeground(Color.BLACK);
+        groupInfo.addActionListener(this);
         newInformation.add(groupInfo);
 
         JMenuItem studentInfo = new JMenuItem("New Student Information");
         studentInfo.setForeground(Color.BLACK);
+        studentInfo.addActionListener(this);
         newInformation.add(studentInfo);
 
         //details
@@ -149,6 +151,10 @@ public class Project extends JFrame implements ActionListener {
             try {
                 Runtime.getRuntime().exec("notepad.exe");
             } catch (Exception error) {}
+        } else if (message.equals("New Group Information")) {
+            new AddTeacher();
+        } else if (message.equals("New Student Information")) {
+            new AddStudent();
         }
     }
 
