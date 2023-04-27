@@ -38,10 +38,12 @@ public class Project extends JFrame implements ActionListener {
         
         JMenuItem groupDetails = new JMenuItem("View Group Details");
         groupDetails.setForeground(Color.BLACK);
+        groupDetails.addActionListener(this);
         details.add(groupDetails);
 
         JMenuItem studentDetails = new JMenuItem("View Student Details");
         studentDetails.setForeground(Color.BLACK);
+        studentDetails.addActionListener(this);
         details.add(studentDetails);
 
         //leave
@@ -155,6 +157,10 @@ public class Project extends JFrame implements ActionListener {
             new AddTeacher();
         } else if (message.equals("New Student Information")) {
             new AddStudent();
+        } else if (message.equals("View Group Details")) {
+            new TeacherDetails();
+        } else if (message.equals("View Student Details")) {
+            new StudentDetails();
         }
     }
 
